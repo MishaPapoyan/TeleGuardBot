@@ -110,9 +110,13 @@ def main() -> None:
 
     if config.WEBHOOK_URL:
         logger.info(f"Webhook mode → {config.WEBHOOK_URL} (port {config.PORT})")
+        # url_path must match the path in WEBHOOK_URL so PTB listens on /TOKEN
+        from urllib.parse import urlparse
+        url_path = urlparse(config.WEBHOOK_URL).path.lstrip("/")
         app.run_webhook(
             listen="0.0.0.0",
             port=config.PORT,
+            url_path=url_path,
             webhook_url=config.WEBHOOK_URL,
             allowed_updates=Update.ALL_TYPES,
         )
