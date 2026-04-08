@@ -1,4 +1,6 @@
-python-telegram-bot[job-queue]~=21.0
+
+python-telegram-bot[job-queue,webhooks]~=21.0
 gspread~=6.1
 google-auth~=2.29
 python-dotenv~=1.0
+certifi~=2024.0
