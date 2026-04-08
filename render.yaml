@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: teleguard-bot
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: GOOGLE_SHEET_ID
+        sync: false
+      - key: GOOGLE_CREDENTIALS_JSON
+        sync: false          # paste the full JSON content here
+      - key: GROUP_ID
+        sync: false
+      - key: WEBHOOK_URL
+        sync: false          # set to https://your-service.onrender.com/YOUR_BOT_TOKEN

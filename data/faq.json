@@ -1,0 +1,29 @@
+{
+  "faqs": [
+    {
+      "id": 1,
+      "question": "What services do you offer?",
+      "answer": "We build Telegram bots, websites, and automations tailored for small businesses. Specialties include lead capture bots, community management bots, Google Sheets integrations, and API connections."
+    },
+    {
+      "id": 2,
+      "question": "How much does a project cost?",
+      "answer": "Pricing starts at $200 for simple bots and $500+ for full-featured systems. Every project is scoped individually — click *Get a Quote* for a personalised estimate with no obligation."
+    },
+    {
+      "id": 3,
+      "question": "How long does a project take?",
+      "answer": "Most bots and automations are delivered in 3–7 days. Larger projects may take 2–4 weeks. You'll always receive a clear timeline before we start."
+    },
+    {
+      "id": 4,
+      "question": "Do you offer revisions?",
+      "answer": "Yes — every project includes 2 rounds of revisions at no extra cost. Your satisfaction matters, and we won't close a project until you're happy."
+    },
+    {
+      "id": 5,
+      "question": "How do I get started?",
+      "answer": "Tap *Get a Quote* to describe your project, or *Book a Call* to speak directly. We respond within 24 hours on business days."
+    }
+  ]
+}
