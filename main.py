@@ -3,7 +3,22 @@ TeleGuard Bot — Entry Point
 Dual-purpose Telegram bot: Business Lead Capture + Community Moderation
 """
 
+import asyncio
 import logging
+import os
+import warnings
+
+from telegram.warnings import PTBUserWarning
+warnings.filterwarnings("ignore", category=PTBUserWarning)
+
+# Fix: PostgreSQL installation sets REQUESTS_CA_BUNDLE to its own cert path,
+# which breaks gspread/requests. Override with certifi's trusted bundle.
+try:
+    import certifi
+    os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
+    os.environ["SSL_CERT_FILE"] = certifi.where()
+except ImportError:
+    pass
 
 from telegram import Update
 from telegram.ext import (
@@ -107,4 +122,13 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # Python 3.12+ removed auto event-loop creation. Python 3.14 made it stricter.
+    # Explicitly create and set a loop before PTB touches asyncio.
+    try:
+        loop = asyncio.get_event_loop()
+        if loop.is_closed():
+            raise RuntimeError("loop closed")
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
     main()
