@@ -32,6 +32,7 @@ from telegram.ext import (
 from config import config
 from utils.logger import setup_logging
 from utils.sheets import ensure_sheets_exist
+from utils.health import start_health_server
 
 from handlers.start import back_to_menu_callback, start_command, view_services_callback
 from handlers.leads import build_leads_conversation
@@ -100,6 +101,7 @@ def build_app() -> Application:
 
 def main() -> None:
     config.validate()
+    start_health_server()
     logger.info("TeleGuard starting up...")
 
     # Best-effort: create missing Google Sheets tabs at startup
